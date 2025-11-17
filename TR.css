@@ -1,0 +1,225 @@
+/* =======================================================
+   GLOBAL STYLING (Modern, Simple, Elegant)
+======================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #eef2ff, #ffffff);
+    min-height: 100vh;
+    color: #1e1e1e;
+    animation: bgFade 1.2s ease;
+}
+
+@keyframes bgFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* =======================================================
+   TITLES & HEADERS
+======================================================= */
+h1, h2, h3 {
+    color: #2c4bff;
+    text-align: center;
+    margin-bottom: 18px;
+    letter-spacing: 0.4px;
+    animation: fadeUp .7s ease;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =======================================================
+   FORM STYLES – UNIVERSAL (Tanpa ubah HTML)
+======================================================= */
+form {
+    max-width: 460px;
+    margin: 30px auto;
+    padding: 28px;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.1);
+    animation: floatUp .8s ease;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(25px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    margin: 12px 0 6px;
+    color: #333;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1.5px solid #dcdcdc;
+    transition: border-color .25s, box-shadow .25s, transform .25s;
+}
+
+/* Fokus: Glow interaktif */
+input:focus, select:focus, textarea:focus {
+    border-color: #2c4bff;
+    box-shadow: 0 0 0 4px rgba(44, 75, 255, 0.22);
+    outline: none;
+    transform: translateY(-2px);
+}
+
+/* Hover input */
+input:hover, select:hover, textarea:hover {
+    border-color: #9bb3ff;
+}
+
+/* =======================================================
+   BUTTON STYLE (PROFESSIONAL + RIPPLES)
+======================================================= */
+button, input[type="submit"] {
+    width: 100%;
+    margin-top: 18px;
+    padding: 14px;
+    background: #2c4bff;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: transform .25s, box-shadow .25s;
+}
+
+/* Hover efek naik */
+button:hover, input[type="submit"]:hover {
+    background: #1d39e5;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(44, 75, 255, 0.28);
+}
+
+/* Tekan animasi */
+button:active, input[type="submit"]:active {
+    transform: scale(0.97);
+}
+
+/* Ripple effect */
+button::after, input[type="submit"]::after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    background: rgba(255,255,255,0.55);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%,-50%);
+}
+
+button:active::after,
+input[type="submit"]:active::after {
+    width: 240px;
+    height: 240px;
+    opacity: 1;
+    transition: .45s;
+    top: var(--y);
+    left: var(--x);
+}
+
+/* =======================================================
+   CARD / DIV UNIVERSAL – FLOATING STYLE
+======================================================= */
+div, section {
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+/* Khusus container umum */
+.container, .box, .panel, .wrapper {
+    background: rgba(255,255,255,0.7);
+    padding: 25px;
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 18px 36px rgba(0,0,0,0.08);
+}
+
+/* Hover float card */
+.container:hover, .box:hover, .panel:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 50px rgba(0,0,0,0.12);
+}
+
+/* =======================================================
+   LINK STYLE – Natural & Elegan
+======================================================= */
+a {
+    text-decoration: none;
+    color: #2c4bff;
+    font-weight: 500;
+    position: relative;
+    transition: color .25s ease;
+}
+
+a:hover {
+    color: #001bb8;
+}
+
+a::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: #2c4bff;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    transition: .3s;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* =======================================================
+   FOOTER (Elegan)
+======================================================= */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #444;
+    margin-top: 40px;
+}
+
+/* =======================================================
+   CREDIT — CSS dibuat oleh Adi Haki (036)
+======================================================= */
+body::after {
+    content: "CSS dibuat oleh Adi Haki (036)";
+    position: fixed;
+    bottom: 8px;
+    right: 14px;
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 8px;
+    backdrop-filter: blur(6px);
+    opacity: 0.85;
+    pointer-events: none;
+}
