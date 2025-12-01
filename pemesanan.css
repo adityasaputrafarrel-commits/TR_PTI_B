@@ -1,0 +1,111 @@
+/* ===== ROOT ===== */
+:root{
+  --epl-purple:#3a0ca3;
+  --epl-pink:#ff6bd6;
+  --muted:#6b7280;
+  --shadow-soft:0 6px 18px rgba(10,10,30,0.06);
+}
+
+/* ===== BASE ===== */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Poppins,sans-serif;
+  background:#f5f7fb;
+  color:#0b1220;
+}
+.container{max-width:1140px;margin:auto;padding:0 20px}
+.card{background:white;padding:20px;border-radius:12px;box-shadow:var(--shadow-soft)}
+.muted{color:var(--muted)}
+input,select{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #e6e8f0;
+}
+
+/* ===== NAVBAR ===== */
+.stadium-header{
+  background:linear-gradient(90deg,var(--epl-purple),var(--epl-pink));
+  color:white;
+  padding:14px 0;
+  position:sticky;top:0;z-index:50;
+}
+.header-row{display:flex;justify-content:space-between;align-items:center;padding:0 20px}
+.nav{display:flex;gap:12px}
+.nav-link{
+  color:white;
+  padding:8px 12px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:700;
+}
+.nav-link.active{background:rgba(255,255,255,0.15)}
+
+/* ===== LAYOUT ===== */
+.pemesanan-container{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:28px;
+  padding:34px 20px;
+}
+
+/* ===== LEGEND ===== */
+.legend-wrap{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}
+.legend{display:flex;align-items:center;gap:6px;color:var(--muted)}
+.dot{width:14px;height:14px;border-radius:4px}
+.vip{background:#ffd166}
+.premium{background:#ff8ba7}
+.available{background:#e6eef8}
+.selected{background:linear-gradient(90deg,var(--epl-purple),var(--epl-pink));color:white}
+.reserved{background:#6b7280}
+
+/* ===== SEAT GRID ===== */
+.seat-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:8px;
+  margin-top:14px;
+}
+
+.seat{
+  padding:10px 6px;
+  text-align:center;
+  background:#eef3fb;
+  border-radius:8px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.2s;
+}
+.seat:hover{transform:translateY(-3px)}
+.seat.selected{color:white}
+.seat.reserved{
+  background:#bfc6cf;
+  color:white;
+  cursor:not-allowed;
+}
+
+/* ORDER SUMMARY */
+.selected-list{
+  min-height:52px;
+  padding:10px;
+  background:#fbfbfe;
+  border-radius:10px;
+  border:1px solid #eef2ff;
+  color:var(--muted);
+}
+
+.price{
+  font-weight:900;
+  color:var(--epl-purple);
+}
+
+.btn-primary{
+  padding:12px;
+  border-radius:10px;
+  background:linear-gradient(90deg,var(--epl-purple),var(--epl-pink));
+  border:none;
+  color:white;
+  font-weight:800;
+  width:100%;
+}
