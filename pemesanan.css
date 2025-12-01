@@ -17,11 +17,22 @@ body{
 .container{max-width:1140px;margin:auto;padding:0 20px}
 .card{background:white;padding:20px;border-radius:12px;box-shadow:var(--shadow-soft)}
 .muted{color:var(--muted)}
-input,select{
+input,select,textarea{
   width:100%;
   padding:12px;
   border-radius:10px;
   border:1px solid #e6e8f0;
+}
+label{
+  display:block;
+  margin-bottom:6px;
+  font-weight:600;
+  color:#0b1220;
+}
+.form{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
 }
 
 /* ===== NAVBAR ===== */
@@ -74,15 +85,24 @@ input,select{
   background:#eef3fb;
   border-radius:8px;
   font-weight:700;
-  cursor:pointer;
-  transition:.2s;
+  color:var(--epl-purple);
+  background:#f8f9ff;
+  padding:8px 12px;
 }
-.seat:hover{transform:translateY(-3px)}
-.seat.selected{color:white}
-.seat.reserved{
-  background:#bfc6cf;
-  color:white;
-  cursor:not-allowed;
+#seatSelect option{
+  padding:6px 12px;
+  background:white;
+}
+#seatSelect option:hover{
+  background:#eef3fb;
+}
+#seatSelect optgroup[label*="VIP"]{
+  background:#ffd166;
+  color:#0b1220;
+}
+#seatSelect optgroup[label*="Premium"]{
+  background:#ff8ba7;
+  color:#0b1220;
 }
 
 /* ORDER SUMMARY */
@@ -108,4 +128,31 @@ input,select{
   color:white;
   font-weight:800;
   width:100%;
+}
+.btn-primary:disabled{
+  background:rgba(58,12,163,0.12);
+  cursor:not-allowed;
+}   
+
+/* ====== FOOTER====== */
+.interactive-footer{background:linear-gradient(90deg,var(--epl-purple),var(--epl-pink));color:white;padding:18px 0;margin-top:28px;border-top-left-radius:12px;border-top-right-radius:12px}
+.footer-grid{display:flex;gap:20px;align-items:center;justify-content:space-between;max-width:1140px;margin:0 auto;padding:0 20px}
+.footer-left{display:flex;gap:12px;align-items:center}
+.footer-logo{width:38px}
+.footer-center input{padding:10px;border-radius:8px;border:none;width:260px}
+.footer-center button{margin-left:8px;padding:10px 12px;border-radius:8px;border:none;background:rgba(0,0,0,0.08);color:white}
+.footer-right{display:flex;gap:12px;align-items:center}
+.link-inline{color:var(--accent);font-weight:700}
+
+/* ====== UTILS & A11Y ====== */
+.muted{color:var(--muted)}
+.link-inline{color:var(--epl-pink);font-weight:700}
+input:focus,select:focus,textarea:focus,.seat:focus{outline:3px solid rgba(58,12,163,0.12);outline-offset:2px}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.12);padding:8px 10px;border-radius:8px;color:white;cursor:pointer}
+
+/* small helpers */
+.card.small{padding:14px}
+@media(max-width:720px){
+  .footer-grid{flex-direction:column;gap:10px;text-align:center}
+  .footer-center input{width:100%}
 }
