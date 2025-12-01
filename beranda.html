@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Beranda — Premier League Tickets</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="beranda.css">
+</head>
+<body>
+  <header class="site-header stadium-header">
+    <div class="container header-row">
+      <div class="left logo">Premier League Tickets</div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="beranda.html" class="nav-link active">Beranda</a>
+        <a href="pemesanan.html" class="nav-link">Pemesanan</a>
+        <a href="pembayaran.html" class="nav-link">Pembayaran</a>
+        <a href="login.html" class="nav-link btn-ghost">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="hero-viewport">
+    <section class="stadium-hero">
+      <div class="hero-inner container">
+        <h1>Matchday Premier League — Full Fixture</h1>
+        <p class="lead">Pilih pertandingan, pilih kursi, dan nikmati pengalaman stadion kelas dunia.</p>
+        <div class="hero-cta">
+          <a href="#matches" class="btn-primary btn-lg">Lihat Pertandingan</a>
+          <a href="pemesanan.html" class="btn-ghost">Langsung Pesan</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="matches" class="section matches-section">
+      <h2>Jadwal Matchday (10 Pertandingan)</h2>
+      <div class="matches-center-container">
+        <div class="matches-grid-2col-centered">
+          
+          <!-- Match 1 -->
+          <article class="match-card-col">
+            <div class="match-teams-col">
+              <div class="team-col home-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg" alt="Manchester City" class="team-logo-col">
+                <div class="team-name-col">Manchester City</div>
+              </div>
+              
+              <div class="match-vs-col">
+                <div class="vs-text-col">VS</div>
+                <div class="match-time-col">20 Des 2025</div>
+                <div class="match-time-col">17:30</div>
+              </div>
+              
+              <div class="team-col away-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg" alt="Arsenal" class="team-logo-col">
+                <div class="team-name-col">Arsenal</div>
+              </div>
+            </div>
+            
+            <div class="match-info-col">
+              <div class="match-venue-col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                </svg>
+                Etihad Stadium
+              </div>
+              
+              <div class="match-actions-col">
+                <a href="pemesanan.html" class="btn-primary">Pesan</a>
+                <button class="btn-ghost btn-detail" onclick="alert('Manchester City vs Arsenal\n20 Des 2025 • 17:30\nVenue: Etihad Stadium')">Detail</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Match 2 -->
+          <article class="match-card-col">
+            <div class="match-teams-col">
+              <div class="team-col home-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg" alt="Liverpool" class="team-logo-col">
+                <div class="team-name-col">Liverpool</div>
+              </div>
+              
+              <div class="match-vs-col">
+                <div class="vs-text-col">VS</div>
+                <div class="match-time-col">21 Des 2025</div>
+                <div class="match-time-col">20:00</div>
+              </div>
+              
+              <div class="team-col away-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg" alt="Chelsea" class="team-logo-col">
+                <div class="team-name-col">Chelsea</div>
+              </div>
+            </div>
+            
+            <div class="match-info-col">
+              <div class="match-venue-col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                </svg>
+                Anfield
+              </div>
+              
+              <div class="match-actions-col">
+                <a href="pemesanan.html" class="btn-primary">Pesan</a>
+                <button class="btn-ghost btn-detail" onclick="alert('Liverpool vs Chelsea\n21 Des 2025 • 20:00\nVenue: Anfield')">Detail</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Match 3 -->
+          <article class="match-card-col">
+            <div class="match-teams-col">
+              <div class="team-col home-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" alt="Manchester United" class="team-logo-col">
+                <div class="team-name-col">Manchester United</div>
+              </div>
+              
+              <div class="match-vs-col">
+                <div class="vs-text-col">VS</div>
+                <div class="match-time-col">20 Des 2025</div>
+                <div class="match-time-col">20:00</div>
+              </div>
+              
+              <div class="team-col away-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg" alt="Tottenham" class="team-logo-col">
+                <div class="team-name-col">Tottenham</div>
+              </div>
+            </div>
+            
+            <div class="match-info-col">
+              <div class="match-venue-col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                </svg>
+                Old Trafford
+              </div>
+              
+              <div class="match-actions-col">
+                <a href="pemesanan.html" class="btn-primary">Pesan</a>
+                <button class="btn-ghost btn-detail" onclick="alert('Manchester United vs Tottenham\n20 Des 2025 • 20:00\nVenue: Old Trafford')">Detail</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Match 4 -->
+          <article class="match-card-col">
+            <div class="match-teams-col">
+              <div class="team-col home-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/f/fd/Brighton_%26_Hove_Albion_logo.svg" alt="Brighton" class="team-logo-col">
+                <div class="team-name-col">Brighton</div>
+              </div>
+              
+              <div class="match-vs-col">
+                <div class="vs-text-col">VS</div>
+                <div class="match-time-col">19 Des 2025</div>
+                <div class="match-time-col">18:30</div>
+              </div>
+              
+              <div class="team-col away-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Newcastle_United_Logo.svg" alt="Newcastle" class="team-logo-col">
+                <div class="team-name-col">Newcastle</div>
+              </div>
+            </div>
+            
+            <div class="match-info-col">
+              <div class="match-venue-col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                </svg>
+                Amex Stadium
+              </div>
+              
+              <div class="match-actions-col">
+                <a href="pemesanan.html" class="btn-primary">Pesan</a>
+                <button class="btn-ghost btn-detail" onclick="alert('Brighton vs Newcastle\n19 Des 2025 • 18:30\nVenue: Amex Stadium')">Detail</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Match 5 -->
+          <article class="match-card-col">
+            <div class="match-teams-col">
+              <div class="team-col home-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/c/c2/West_Ham_United_FC_logo.svg" alt="West Ham" class="team-logo-col">
+                <div class="team-name-col">West Ham</div>
+              </div>
+              
+              <div class="match-vs-col">
+                <div class="vs-text-col">VS</div>
+                <div class="match-time-col">18 Des 2025</div>
+                <div class="match-time-col">16:00</div>
+              </div>
+              
+              <div class="team-col away-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/9/9f/Aston_Villa_logo.svg" alt="Aston Villa" class="team-logo-col">
+                <div class="team-name-col">Aston Villa</div>
+              </div>
+            </div>
+            
+            <div class="match-info-col">
+              <div class="match-venue-col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                </svg>
+                London Stadium
+              </div>
+              
+              <div class="match-actions-col">
+                <a href="pemesanan.html" class="btn-primary">Pesan</a>
+                <button class="btn-ghost btn-detail" onclick="alert('West Ham vs Aston Villa\n18 Des 2025 • 16:00\nVenue: London Stadium')">Detail</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Match 6 -->
+          <article class="match-card-col">
+            <div class="match-teams-col">
+              <div class="team-col home-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Crystal_Palace_FC_logo.svg" alt="Crystal Palace" class="team-logo-col">
+                <div class="team-name-col">Crystal Palace</div>
+              </div>
+              
+              <div class="match-vs-col">
+                <div class="vs-text-col">VS</div>
+                <div class="match-time-col">22 Des 2025</div>
+                <div class="match-time-col">15:00</div>
+              </div>
+              
+              <div class="team-col away-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/2/2a/Brentford_FC_crest.svg" alt="Brentford" class="team-logo-col">
+                <div class="team-name-col">Brentford</div>
+              </div>
+            </div>
+            
+            <div class="match-info-col">
+              <div class="match-venue-col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                </svg>
+                Selhurst Park
+              </div>
+              
+              <div class="match-actions-col">
+                <a href="pemesanan.html" class="btn-primary">Pesan</a>
+                <button class="btn-ghost btn-detail" onclick="alert('Crystal Palace vs Brentford\n22 Des 2025 • 15:00\nVenue: Selhurst Park')">Detail</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Match 7 -->
+          <article class="match-card-col">
+            <div class="match-teams-col">
+              <div class="team-col home-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/2/2d/Leicester_City_crest.svg" alt="Leicester City" class="team-logo-col">
+                <div class="team-name-col">Leicester City</div>
+              </div>
+              
+              <div class="match-vs-col">
+                <div class="vs-text-col">VS</div>
+                <div class="match-time-col">19 Des 2025</div>
+                <div class="match-time-col">19:00</div>
+              </div>
+              
+              <div class="team-col away-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/7/7c/Everton_FC_logo.svg" alt="Everton" class="team-logo-col">
+                <div class="team-name-col">Everton</div>
+              </div>
+            </div>
+            
+            <div class="match-info-col">
+              <div class="match-venue-col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                </svg>
+                King Power Stadium
+              </div>
+              
+              <div class="match-actions-col">
+                <a href="pemesanan.html" class="btn-primary">Pesan</a>
+                <button class="btn-ghost btn-detail" onclick="alert('Leicester City vs Everton\n19 Des 2025 • 19:00\nVenue: King Power Stadium')">Detail</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Match 8 -->
+          <article class="match-card-col">
+            <div class="match-teams-col">
+              <div class="team-col home-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/f/fc/Wolverhampton_Wanderers.svg" alt="Wolves" class="team-logo-col">
+                <div class="team-name-col">Wolves</div>
+              </div>
+              
+              <div class="match-vs-col">
+                <div class="vs-text-col">VS</div>
+                <div class="match-time-col">21 Des 2025</div>
+                <div class="match-time-col">14:00</div>
+              </div>
+              
+              <div class="team-col away-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/5/54/Leeds_United_F.C._logo.svg" alt="Leeds United" class="team-logo-col">
+                <div class="team-name-col">Leeds United</div>
+              </div>
+            </div>
+            
+            <div class="match-info-col">
+              <div class="match-venue-col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                </svg>
+                Molineux
+              </div>
+              
+              <div class="match-actions-col">
+                <a href="pemesanan.html" class="btn-primary">Pesan</a>
+                <button class="btn-ghost btn-detail" onclick="alert('Wolves vs Leeds United\n21 Des 2025 • 14:00\nVenue: Molineux')">Detail</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Match 9 -->
+          <article class="match-card-col">
+            <div class="match-teams-col">
+              <div class="team-col home-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Fulham_FC_(shield).svg" alt="Fulham" class="team-logo-col">
+                <div class="team-name-col">Fulham</div>
+              </div>
+              
+              <div class="match-vs-col">
+                <div class="vs-text-col">VS</div>
+                <div class="match-time-col">22 Des 2025</div>
+                <div class="match-time-col">17:00</div>
+              </div>
+              
+              <div class="team-col away-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/6/6d/Burnley_F.C._Logo.svg" alt="Burnley" class="team-logo-col">
+                <div class="team-name-col">Burnley</div>
+              </div>
+            </div>
+            
+            <div class="match-info-col">
+              <div class="match-venue-col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                </svg>
+                Craven Cottage
+              </div>
+              
+              <div class="match-actions-col">
+                <a href="pemesanan.html" class="btn-primary">Pesan</a>
+                <button class="btn-ghost btn-detail" onclick="alert('Fulham vs Burnley\n22 Des 2025 • 17:00\nVenue: Craven Cottage')">Detail</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Match 10 -->
+          <article class="match-card-col">
+            <div class="match-teams-col">
+              <div class="team-col home-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/c/c9/FC_Southampton.svg" alt="Southampton" class="team-logo-col">
+                <div class="team-name-col">Southampton</div>
+              </div>
+              
+              <div class="match-vs-col">
+                <div class="vs-text-col">VS</div>
+                <div class="match-time-col">18 Des 2025</div>
+                <div class="match-time-col">13:30</div>
+              </div>
+              
+              <div class="team-col away-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/9/9c/Sheffield_United_FC_logo.svg" alt="Sheffield United" class="team-logo-col">
+                <div class="team-name-col">Sheffield United</div>
+              </div>
+            </div>
+            
+            <div class="match-info-col">
+              <div class="match-venue-col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                </svg>
+                St Mary's Stadium
+              </div>
+              
+              <div class="match-actions-col">
+                <a href="pemesanan.html" class="btn-primary">Pesan</a>
+                <button class="btn-ghost btn-detail" onclick="alert('Southampton vs Sheffield United\n18 Des 2025 • 13:30\nVenue: St Mary\'s Stadium')">Detail</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section">
+      <div class="about-card">
+        <h3>Tentang Platform</h3>
+        <p class="muted">Platform demo ini menampilkan alur pemesanan tiket, seat-map interaktif, dan konfirmasi pembayaran (simulasi).</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer interactive-footer">
+    <div class="footer-grid">
+      <div class="footer-left">
+        <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg" alt="PL" class="footer-logo">
+        <p>Premier League Tickets • Demo</p>
+      </div>
+
+      <div class="footer-center">
+        <input id="footerEmail2" type="email" placeholder="Daftar newsletter (email)" />
+        <button id="subscribeBtn2" class="btn-ghost" onclick="subscribeNewsletter()">Subscribe</button>
+      </div>
+
+      <div class="footer-right">
+        <a href="#matches" class="link-inline">Lihat Pertandingan</a>
+        <button id="backTop2" class="btn-ghost" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to top</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Fungsi sederhana untuk subscribe newsletter
+    function subscribeNewsletter() {
+      const emailInput = document.getElementById('footerEmail2');
+      const email = emailInput.value.trim();
+      
+      if(!email) {
+        alert('Masukkan email untuk subscribe.');
+        return;
+      }
+      
+      alert('Terima kasih! Newsletter dikirim ke: ' + email);
+      emailInput.value = '';
+    }
+  </script>
+</body>
+</html>
