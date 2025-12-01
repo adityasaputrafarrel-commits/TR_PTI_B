@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pemesanan — Premier League Tickets</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pemesanan.css" />
+</head>
+<body>
+  <header class="site-header stadium-header">
+    <div class="container header-row">
+      <div class="logo">Premier League Tickets</div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="beranda.html" class="nav-link">Beranda</a>
+        <a href="pemesanan.html" class="nav-link active">Pemesanan</a>
+        <a href="pembayaran.html" class="nav-link">Pembayaran</a>
+        <a href="login.html" class="nav-link btn-ghost">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="pemesanan-container container">
+    <!-- LEFT: seat map -->
+    <section class="card seat-card">
+      <h2 id="matchTitle">Pilih Kursi</h2>
+      <p class="muted" id="matchMeta">Pilih pertandingan dulu dari daftar kanan, atau gunakan tombol Pesan di beranda.</p>
+
+      <div class="legend-wrap">
+        <div class="legend"><span class="dot vip"></span> VIP</div>
+        <div class="legend"><span class="dot premium"></span> Premium</div>
+        <div class="legend"><span class="dot available"></span> Available</div>
+        <div class="legend"><span class="dot selected"></span> Selected</div>
+        <div class="legend"><span class="dot reserved"></span> Reserved</div>
+      </div>
+
+      <div id="seatGrid" class="seat-grid" role="grid" aria-label="Peta kursi"></div>
+    </section>
+
+    <!-- RIGHT: form & summary -->
+    <aside class="card order-card">
+      <h2>Detail Pemesanan</h2>
+      <div class="form">
+        <label for="matchSelect">Pilih Pertandingan</label>
+        <select id="matchSelect">
+          <option value="">-- Pilih Pertandingan --</option>
+        </select>
+
+        <label for="nama">Nama Lengkap</label>
+        <input id="nama" type="text" placeholder="Nama sesuai identitas" />
+
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="email@contoh.com" />
+
+        <label for="hp">No. HP</label>
+        <input id="hp" type="tel" placeholder="08xxxx" />
+
+        <label for="kategori">Kategori Harga</label>
+        <select id="kategori">
+          <option value="VIP" data-price="1500000">VIP — Rp 1.500.000</option>
+          <option value="Premium" data-price="1000000">Premium — Rp 1.000.000</option>
+          <option value="Regular" data-price="500000">Regular — Rp 500.000</option>
+          <option value="Economy" data-price="200000">Economy — Rp 200.000</option>
+        </select>
+
+        <label>Daftar Kursi Terpilih</label>
+        <div id="selectedList" class="selected-list">-</div>
+
+        <label>Total</label>
+        <div id="totalPrice" class="price">Rp 0</div>
+
+        <button id="toPayment" class="btn-primary full">Lanjut ke Pembayaran</button>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="page-footer interactive-footer">
+    <div class="container footer-grid">
+      <div class="footer-left">
+        <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg" alt="PL" class="footer-logo">
+        <p>Premier League Tickets • Demo</p>
+      </div>
+
+      <div class="footer-center">
+        <input id="footerEmail3" type="email" placeholder="Daftar newsletter (email)" />
+        <button id="subscribeBtn3" class="btn-ghost">Subscribe</button>
+      </div>
+
+      <div class="footer-right">
+        <button id="backTop3" class="btn-ghost">Back to top</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Shared matches (same as beranda)
+    const matches = [
+      {id:1, home:'Manchester City', away:'Arsenal', date:'20 Des 2025', time:'17:30', venue:'Etihad Stadium'},
+      {id:2, home:'Liverpool', away:'Chelsea', date:'21 Des 2025', time:'20:00', venue:'Anfield'},
+      {id:3, home:'Manchester United', away:'Tottenham', date:'20 Des 2025', time:'20:00', venue:'Old Trafford'},
+      {id:4, home:'Brighton', away:'Newcastle', date:'19 Des 2025', time:'18:30', venue:'Amex Stadium'},
+      {id:5, home:'West Ham', away:'Aston Villa', date:'18 Des 2025', time:'16:00', venue:'London Stadium'},
+      {id:6, home:'Crystal Palace', away:'Brentford', date:'22 Des 2025', time:'15:00', venue:'Selhurst Park'},
+      {id:7, home:'Leicester City', away:'Everton', date:'19 Des 2025', time:'19:00', venue:'King Power Stadium'},
+      {id:8, home:'Wolves', away:'Leeds United', date:'21 Des 2025', time:'14:00', venue:'Molineux'},
+      {id:9, home:'Fulham', away:'Burnley', date:'22 Des 2025', time:'17:00', venue:'Craven Cottage'},
+      {id:10, home:'Southampton', away:'Sheffield United', date:'18 Des 2025', time:'13:30', venue:"St Mary's Stadium"}
+    ];
+
+    // Build match dropdown
+    const matchSelect = document.getElementById('matchSelect');
+    matches.forEach(m => {
+      const opt = document.createElement('option');
+      opt.value = m.id;
+      opt.textContent = `${m.home} vs ${m.away} — ${m.date} • ${m.venue}`;
+      matchSelect.appendChild(opt);
+    });
+
+    // If user came from beranda, localStorage may have selected match
+    const stored = localStorage.getItem('pl_selectedMatch');
+    if(stored){
+      const sel = JSON.parse(stored);
+      const opt = Array.from(matchSelect.options).find(o => parseInt(o.value,10) === sel.id);
+      if(opt) matchSelect.value = sel.id;
+      document.getElementById('nama').value = localStorage.getItem('pl_user') || '';
+    }
+
+    // Seat grid config: rows A-H (8), cols 12 (wider stadium)
+    const rows = ['A','B','C','D','E','F','G','H'];
+    const cols = 12;
+    const seatGrid = document.getElementById('seatGrid');
+    const selectedList = document.getElementById('selectedList');
+    const totalPrice = document.getElementById('totalPrice');
+    const kategoriSelect = document.getElementById('kategori');
+    let selectedSeats = JSON.parse(localStorage.getItem('pl_selectedSeats') || '[]');
+
+    // Pre-reserved for stadium feel
+    const reserved = new Set(['A1','A2','A3','B6','C3','D10','E5','F8','G2','H12','C12','B11']);
+
+    function rowCategory(r){
+      if(r==='A') return 'VIP';
+      if(r==='B') return 'Premium';
+      if(r==='C'||r==='D') return 'Regular';
+      return 'Economy';
+    }
+
+    function createSeat(code, state, cat){
+      const btn = document.createElement('button');
+      btn.type='button';
+      btn.className = 'seat ' + (state==='Reserved'?'reserved':'available') + ' ' + cat.toLowerCase();
+      btn.textContent = code;
+      btn.dataset.seat = code;
+      btn.dataset.cat = cat;
+      btn.setAttribute('aria-label','Kursi '+code);
+      if(state==='Reserved'){
+        btn.disabled = true;
+      } else {
+        btn.addEventListener('click', () => toggleSeat(code, btn));
+      }
+      // restore selected
+      if(selectedSeats.includes(code)){
+        btn.classList.add('selected');
+      }
+      return btn;
+    }
+
+    function buildGrid(){
+      seatGrid.innerHTML = '';
+      for(const r of rows){
+        for(let c=1;c<=cols;c++){
+          const code = r + c;
+          const cat = rowCategory(r);
+          const state = reserved.has(code)?'Reserved':'Available';
+          const seat = createSeat(code,state,cat);
+          seatGrid.appendChild(seat);
+        }
+      }
+      updateSummary();
+    }
+
+    function toggleSeat(code, btn){
+      const idx = selectedSeats.indexOf(code);
+      if(idx>-1){
+        selectedSeats.splice(idx,1);
+        btn.classList.remove('selected');
+      } else {
+        selectedSeats.push(code);
+        btn.classList.add('selected');
+      }
+      localStorage.setItem('pl_selectedSeats', JSON.stringify(selectedSeats));
+      updateSummary();
+    }
+
+    function currency(n){ 
+      return 'Rp ' + Number(n).toLocaleString('id-ID'); 
+    }
+
+    function updateSummary(){
+      selectedList.textContent = selectedSeats.length ? selectedSeats.join(', ') : '-';
+      const price = parseInt(kategoriSelect.selectedOptions[0].dataset.price,10) || 0;
+      const total = selectedSeats.length * price;
+      totalPrice.textContent = currency(total);
+      
+      // sync to localStorage for payment page
+      localStorage.setItem('pl_selectedCategory', kategoriSelect.value);
+      localStorage.setItem('pl_selectedTotal', total);
+      
+      const matchId = parseInt(matchSelect.value,10);
+      if (matchId) {
+        const match = matches.find(m => m.id === matchId);
+        if (match) {
+          localStorage.setItem('pl_selectedMatch', JSON.stringify(match));
+        }
+      }
+    }
+
+    // Clicking Lanjut ke Pembayaran -> validate and store data
+    document.getElementById('toPayment').addEventListener('click', () => {
+      const name = document.getElementById('nama').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const hp = document.getElementById('hp').value.trim();
+      const matchId = parseInt(matchSelect.value,10);
+      const match = matches.find(m=>m.id===matchId);
+      
+      if(!match){
+        alert('Pilih pertandingan terlebih dahulu.');
+        return;
+      }
+      
+      if(!name || !email || !hp){
+        alert('Lengkapi data pemesan.');
+        return;
+      }
+      
+      if(selectedSeats.length === 0){
+        alert('Pilih minimal 1 kursi.');
+        return;
+      }
+      
+      // store checkout data
+      localStorage.setItem('pl_selectedMatch', JSON.stringify(match));
+      localStorage.setItem('pl_selectedSeats', JSON.stringify(selectedSeats));
+      localStorage.setItem('pl_selectedCategory', kategoriSelect.value);
+      localStorage.setItem('pl_selectedTotal', selectedSeats.length * parseInt(kategoriSelect.selectedOptions[0].dataset.price,10));
+      localStorage.setItem('pl_user', name);
+      localStorage.setItem('pl_userEmail', email);
+      localStorage.setItem('pl_userPhone', hp);
+      
+      // go to pembayaran
+      window.location.href = 'pembayaran.html';
+    });
+
+    // Change selected match: update title/meta and clear seats
+    matchSelect.addEventListener('change', () => {
+      const id = parseInt(matchSelect.value,10);
+      const match = matches.find(m=>m.id===id);
+      if(match){
+        document.getElementById('matchTitle').textContent = `${match.home} vs ${match.away} — ${match.venue}`;
+        document.getElementById('matchMeta').textContent = `${match.date} • ${match.time}`;
+        // Reset seat selection for new match
+        selectedSeats = [];
+        localStorage.removeItem('pl_selectedSeats');
+        buildGrid();
+      }
+    });
+    
+    // Update summary when category changes
+    kategoriSelect.addEventListener('change', updateSummary);
+
+    // footer interactions
+    document.getElementById('subscribeBtn3').addEventListener('click', () => {
+      const e = document.getElementById('footerEmail3').value.trim();
+      if(!e) {
+        alert('Masukkan email untuk subscribe.');
+        return;
+      }
+      alert('Terima kasih! Newsletter dikirim ke: ' + e);
+      document.getElementById('footerEmail3').value = '';
+    });
+    
+    document.getElementById('backTop3').addEventListener('click', () => 
+      window.scrollTo({top:0,behavior:'smooth'})
+    );
+
+    // Init
+    buildGrid();
+    
+    // If a match was preselected from beranda, set metadata
+    const pre = localStorage.getItem('pl_selectedMatch');
+    if(pre){
+      try {
+        const m = JSON.parse(pre);
+        const opt = Array.from(matchSelect.options).find(o => parseInt(o.value,10) === m.id);
+        if(opt) {
+          matchSelect.value = m.id;
+          document.getElementById('matchTitle').textContent = `${m.home} vs ${m.away} — ${m.venue}`;
+          document.getElementById('matchMeta').textContent = `${m.date} • ${m.time}`;
+        }
+      } catch(e) {
+        console.error('Error parsing match data:', e);
+      }
+    }
+    
+    // Auto-fill user data if available
+    const user = localStorage.getItem('pl_user');
+    const userEmail = localStorage.getItem('pl_userEmail');
+    const userPhone = localStorage.getItem('pl_userPhone');
+    
+    if (user) document.getElementById('nama').value = user;
+    if (userEmail) document.getElementById('email').value = userEmail;
+    if (userPhone) document.getElementById('hp').value = userPhone;
+  </script>
+</body>
+</html>
