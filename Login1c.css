@@ -1,0 +1,183 @@
+/* ============================
+   styles.css — Premier League Stadium Theme
+   Kode ini mencakup gaya Dasar, Tombol, Footer, dan Logika Tab Murni CSS
+   ============================ */
+
+/* ====== VARIABLES (Warna EPL & Global) ====== */
+:root{
+  --epl-purple: #3a0ca3;
+  --epl-pink: #ff6bd6;
+  --gradient-start: #3a0ca3;
+  --gradient-end: #ff6bd6;
+  
+  --bg-page: #f5f7fb; /* Warna background halaman */
+  --card-bg: #ffffff;
+  
+  --muted: #6b7280;
+  --text: #0b1220;
+  
+  --radius: 12px;
+  --shadow-strong: 0 12px 40px rgba(10,10,30,0.12);
+  --shadow-soft: 0 6px 18px rgba(10,10,30,0.06);
+  --glass: rgba(255,255,255,0.85);
+  --transition: 200ms ease;
+}
+
+/* ====== BASE & UTILITIES ====== */
+*{box-sizing:border-box}
+html,body{height:100%; scroll-behavior: smooth;}
+body{
+  margin:0;
+  font-family: 'Poppins', sans-serif;
+  color:var(--text);
+  background:var(--bg-page);
+  line-height: 1.6;
+}
+.container{max-width:1140px;margin:0 auto;padding:0 20px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.link-inline{color:var(--epl-purple);text-decoration:none;font-weight:600;transition:color var(--transition)}
+.link-inline:hover{color:var(--epl-pink)}
+
+/* ====== BUTTONS & INPUTS ====== */
+.btn-primary {
+    background: linear-gradient(90deg, var(--epl-purple), var(--epl-pink));
+    color: white;
+    padding: 12px 20px;
+    border-radius: var(--radius);
+    border: none;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.btn-primary:hover {
+    box-shadow: 0 8px 25px rgba(58, 12, 163, 0.3);
+    transform: translateY(-2px);
+}
+.btn-primary.full {
+    width: 100%;
+    margin-top: 15px;
+}
+.btn-ghost{
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.12);
+    padding:6px 10px;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
+    transition:background var(--transition);
+}
+.btn-ghost:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.input-row{display:flex;flex-direction:column;align-items:flex-start}
+.input-row label{font-weight:600;margin-bottom:6px}
+input[type="text"],input[type="email"],input[type="password"],input[type="tel"]{
+  width:100%;padding:12px;border-radius:10px;border:1px solid #e6e8f0;font-size:15px;background:#fff;
+  transition:border-color var(--transition);
+}
+input:focus{
+    outline: none;
+    border-color: var(--epl-purple);
+    box-shadow: 0 0 0 3px rgba(58, 12, 163, 0.1);
+}
+
+
+/* ==================================
+   4. AUTH (LOGIN) & PURE CSS TAB LOGIC
+   ================================== */
+.auth-page{display:flex;min-height:100vh;flex-direction:column}
+.auth-wrap{display:flex;align-items:center;justify-content:center;padding:48px 20px; flex-grow: 1;}
+.auth-card{
+    width:100%;max-width:460px;
+    padding:28px;
+    border-radius:16px;
+    background:linear-gradient(180deg,var(--glass),#fff);
+    box-shadow:var(--shadow-strong);
+    text-align:center
+}
+.pl-logo{width:82px;display:block;margin:0 auto 8px}
+.brand h1{margin:6px 0 4px}
+.form{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+
+/* --- PURE CSS TAB STYLES --- */
+#tab-login, #tab-register { display: none; }
+.tab-nav { display: flex; justify-content: space-around; margin-bottom: 20px; border-bottom: 2px solid #e6e8f0; }
+.tab-nav label { 
+    flex-grow: 1; padding: 12px 10px; border: none; background: none; font-size: 16px; font-weight: 600; 
+    color: var(--muted); cursor: pointer; border-bottom: 3px solid transparent; 
+    transition: all var(--transition); text-align: center; 
+}
+#tab-login:checked ~ .tab-nav label[for="tab-login"],
+#tab-register:checked ~ .tab-nav label[for="tab-register"] { 
+    color: var(--epl-purple); border-bottom-color: var(--epl-purple); 
+}
+.form-switcher { width: 100%; overflow: hidden; }
+.form-wrapper { display: flex; width: 200%; transition: transform 300ms ease-in-out; }
+.form-wrapper .form { width: 50%; flex-shrink: 0; padding: 12px 2px 0 2px; }
+#tab-register:checked ~ .tab-nav ~ .form-switcher .form-wrapper { transform: translateX(-50%); }
+
+/* Visibilitas Field Register-Only */
+.input-row.register-only { display: none; }
+#tab-register:checked ~ .tab-nav ~ .form-switcher .form-wrapper .form:nth-child(2) .input-row.register-only { display: flex; }
+
+
+/* ==================================
+   5. FOOTER & BACK TO TOP
+   ================================== */
+.interactive-footer{
+    background:linear-gradient(90deg,var(--epl-purple),var(--epl-pink));
+    color:white;
+    padding:18px 0;
+    margin-top:auto;
+    border-top-left-radius:12px;
+    border-top-right-radius:12px
+}
+.footer-grid{display:flex;gap:20px;align-items:center;justify-content:space-between;max-width:1140px;margin:0 auto;padding:0 20px}
+.footer-left{display:flex;gap:12px;align-items:center}
+.footer-logo{width:38px}
+
+.footer-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer-center .link-inline {
+    color: white !important;
+    border-bottom: 1px dotted white;
+    transition: all var(--transition);
+}
+.footer-center .link-inline:hover {
+    color: var(--muted) !important; /* Contoh warna hover */
+    border-bottom-color: var(--muted) !important;
+}
+
+/* Floating Action Button (FAB) Pure CSS */
+.btn-fab-epl {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--epl-purple), var(--epl-pink));
+    color: white; 
+    text-decoration: none; 
+    box-shadow: var(--shadow-strong);
+    border: none;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+    z-index: 1000;
+}
+
+.btn-fab-epl:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+    box-shadow: 0 16px 45px rgba(58, 12, 163, 0.4);
+}

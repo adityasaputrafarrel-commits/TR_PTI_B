@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login / Daftar — Premier League Tickets</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Login1c.css" />
+</head>
+<body class="auth-page" id="top">
+  <main class="auth-wrap">
+    <div class="auth-card stadium-theme">
+      <div class="brand">
+        <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg" alt="Premier League" class="pl-logo">
+        <h1>Premier League Tickets</h1>
+        <p class="muted">Masuk untuk memesan tiket pertandingan resmi</p>
+      </div>
+
+      <input type="radio" name="auth-tab" id="tab-login" checked>
+      <input type="radio" name="auth-tab" id="tab-register">
+
+      <div class="tab-nav">
+          <label for="tab-login">Masuk (Login)</label>
+          <label for="tab-register">Daftar (Register)</label>
+      </div>
+
+      <div class="form-switcher">
+        <div class="form-wrapper">
+
+          <form class="form" action="beranda.html" method="get" novalidate>
+            <div class="input-row">
+              <label for="login-email">Email</label>
+              <input id="login-email" name="email" type="email" required placeholder="nama@contoh.com" />
+            </div>
+
+            <div class="input-row">
+              <label for="login-password">Kata Sandi</label>
+              <input id="login-password" name="password" type="password" minlength="6" required placeholder="Minimal 6 karakter" />
+            </div>
+
+            <button class="btn-primary full" type="submit">Masuk Sekarang</button>
+          </form>
+          
+          <form class="form" action="beranda.html" method="get" novalidate>
+            <div class="input-row register-only">
+                <label for="register-name">Nama Lengkap</label>
+                <input id="register-name" name="name" type="text" required placeholder="Nama Anda" />
+            </div>
+
+            <div class="input-row">
+                <label for="register-email">Email</label>
+                <input id="register-email" name="email" type="email" required placeholder="nama@contoh.com" />
+            </div>
+
+            <div class="input-row register-only">
+                <label for="register-password">Kata Sandi</label>
+                <input id="register-password" name="password" type="password" minlength="6" required placeholder="Minimal 6 karakter" />
+            </div>
+
+            <div class="input-row register-only">
+                <label for="register-phone">No. HP</label>
+                <input id="register-phone" name="phone" type="tel" placeholder="08xxxx" />
+            </div>
+
+            <button class="btn-primary full" type="submit">Daftar Akun Baru</button>
+          </form>
+
+        </div>
+      </div>
+      <p class="muted small">Masuk sebagai tamu? <a href="beranda.html" class="link-inline">Lanjut ke Beranda</a></p>
+    </div>
+  </main>
+
+  <footer class="page-footer interactive-footer">
+    <div class="container footer-grid">
+      <div class="footer-left">
+        <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg" alt="PL" class="footer-logo">
+        <p>Premier League Tickets • Official fan ticket</p>
+      </div>
+
+      <div class="footer-center">
+        <a href="#" class="link-inline" style="color: white; border-bottom: 1px dotted white;">Daftar Newsletter Resmi</a>
+      </div>
+
+      <div class="footer-right">
+        </div>
+    </div>
+  </footer>
+  
+  <a href="#top" class="btn-fab-epl" aria-label="Back to Top">↑</a>
+
+</body>
+</html>
