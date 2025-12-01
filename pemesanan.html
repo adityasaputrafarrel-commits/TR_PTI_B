@@ -35,7 +35,107 @@
         <div class="legend"><span class="dot reserved"></span> Reserved</div>
       </div>
 
-      <div id="seatGrid" class="seat-grid" role="grid" aria-label="Peta kursi"></div>
+      <label for="seatSelect">Pilih Kursi</label>
+      <select id="seatSelect" multiple size="10">
+        <optgroup label="VIP (Baris A)">
+          <option value="A4">A4</option>
+          <option value="A5">A5</option>
+          <option value="A6">A6</option>
+          <option value="A7">A7</option>
+          <option value="A8">A8</option>
+          <option value="A9">A9</option>
+          <option value="A10">A10</option>
+          <option value="A11">A11</option>
+          <option value="A12">A12</option>
+        </optgroup>
+        <optgroup label="Premium (Baris B)">
+          <option value="B1">B1</option>
+          <option value="B2">B2</option>
+          <option value="B3">B3</option>
+          <option value="B4">B4</option>
+          <option value="B5">B5</option>
+          <option value="B7">B7</option>
+          <option value="B8">B8</option>
+          <option value="B9">B9</option>
+          <option value="B10">B10</option>
+        </optgroup>
+        <optgroup label="Regular (Baris C)">
+          <option value="C1">C1</option>
+          <option value="C2">C2</option>
+          <option value="C4">C4</option>
+          <option value="C5">C5</option>
+          <option value="C6">C6</option>
+          <option value="C7">C7</option>
+          <option value="C8">C8</option>
+          <option value="C9">C9</option>
+          <option value="C10">C10</option>
+        </optgroup>
+        <optgroup label="Regular (Baris D)">
+          <option value="D1">D1</option>
+          <option value="D2">D2</option>
+          <option value="D3">D3</option>
+          <option value="D4">D4</option>
+          <option value="D5">D5</option>
+          <option value="D6">D6</option>
+          <option value="D7">D7</option>
+          <option value="D8">D8</option>
+          <option value="D9">D9</option>
+          <option value="D11">D11</option>
+          <option value="D12">D12</option>
+        </optgroup>
+        <optgroup label="Economy (Baris E)">
+          <option value="E1">E1</option>
+          <option value="E2">E2</option>
+          <option value="E3">E3</option>
+          <option value="E4">E4</option>
+          <option value="E6">E6</option>
+          <option value="E7">E7</option>
+          <option value="E8">E8</option>
+          <option value="E9">E9</option>
+          <option value="E10">E10</option>
+          <option value="E11">E11</option>
+          <option value="E12">E12</option>
+        </optgroup>
+        <optgroup label="Economy (Baris F)">
+          <option value="F1">F1</option>
+          <option value="F2">F2</option>
+          <option value="F3">F3</option>
+          <option value="F4">F4</option>
+          <option value="F5">F5</option>
+          <option value="F6">F6</option>
+          <option value="F7">F7</option>
+          <option value="F9">F9</option>
+          <option value="F10">F10</option>
+          <option value="F11">F11</option>
+          <option value="F12">F12</option>
+        </optgroup>
+        <optgroup label="Economy (Baris G)">
+          <option value="G1">G1</option>
+          <option value="G3">G3</option>
+          <option value="G4">G4</option>
+          <option value="G5">G5</option>
+          <option value="G6">G6</option>
+          <option value="G7">G7</option>
+          <option value="G8">G8</option>
+          <option value="G9">G9</option>
+          <option value="G10">G10</option>
+          <option value="G11">G11</option>
+          <option value="G12">G12</option>
+        </optgroup>
+        <optgroup label="Economy (Baris H)">
+          <option value="H1">H1</option>
+          <option value="H2">H2</option>
+          <option value="H3">H3</option>
+          <option value="H4">H4</option>
+          <option value="H5">H5</option>
+          <option value="H6">H6</option>
+          <option value="H7">H7</option>
+          <option value="H8">H8</option>
+          <option value="H9">H9</option>
+          <option value="H10">H10</option>
+          <option value="H11">H11</option>
+        </optgroup>
+      </select>
     </section>
 
     <!-- RIGHT: form & summary -->
@@ -43,7 +143,18 @@
       <h2>Detail Pemesanan</h2>
       <div class="form">
         <label for="matchSelect">Pilih Pertandingan</label>
-        <select id="matchSelect"></select>
+        <select id="matchSelect">
+          <option value="1">Manchester City vs Arsenal — 20 Des 2025 • Etihad Stadium</option>
+          <option value="2">Liverpool vs Chelsea — 21 Des 2025 • Anfield</option>
+          <option value="3">Manchester United vs Tottenham — 20 Des 2025 • Old Trafford</option>
+          <option value="4">Brighton vs Newcastle — 19 Des 2025 • Amex Stadium</option>
+          <option value="5">West Ham vs Aston Villa — 18 Des 2025 • London Stadium</option>
+          <option value="6">Crystal Palace vs Brentford — 22 Des 2025 • Selhurst Park</option>
+          <option value="7">Leicester City vs Everton — 19 Des 2025 • King Power Stadium</option>
+          <option value="8">Wolves vs Leeds United — 21 Des 2025 • Molineux</option>
+          <option value="9">Fulham vs Burnley — 22 Des 2025 • Craven Cottage</option>
+          <option value="10">Southampton vs Sheffield United — 18 Des 2025 • St Mary's Stadium</option>
+        </select>
 
         <label for="nama">Nama Lengkap</label>
         <input id="nama" type="text" placeholder="Nama sesuai identitas" />
@@ -62,11 +173,11 @@
           <option value="Economy" data-price="200000">Economy — Rp 200.000</option>
         </select>
 
-        <label>Daftar Kursi Terpilih</label>
-        <div id="selectedList" class="selected-list">-</div>
+        <label for="selectedSeats">Daftar Kursi Terpilih</label>
+        <textarea id="selectedSeats" placeholder="Masukkan kode kursi yang dipilih, pisahkan dengan koma (contoh: A4, B5, C6)" rows="3"></textarea>
 
-        <label>Total</label>
-        <div id="totalPrice" class="price">Rp 0</div>
+        <label for="totalPrice">Total</label>
+        <input id="totalPrice" type="text" placeholder="Masukkan total pembayaran" value="Rp 0" />
 
         <button id="toPayment" class="btn-primary full">Lanjut ke Pembayaran</button>
       </div>
@@ -91,183 +202,5 @@
     </div>
   </footer>
 
-  <script>
-    // Shared matches (same as beranda)
-    const matches = [
-      {id:1, home:'Manchester City', away:'Arsenal', date:'20 Des 2025', time:'17:30', venue:'Etihad Stadium'},
-      {id:2, home:'Liverpool', away:'Chelsea', date:'21 Des 2025', time:'20:00', venue:'Anfield'},
-      {id:3, home:'Manchester United', away:'Tottenham', date:'20 Des 2025', time:'20:00', venue:'Old Trafford'},
-      {id:4, home:'Brighton', away:'Newcastle', date:'19 Des 2025', time:'18:30', venue:'Amex Stadium'},
-      {id:5, home:'West Ham', away:'Aston Villa', date:'18 Des 2025', time:'16:00', venue:'London Stadium'},
-      {id:6, home:'Crystal Palace', away:'Brentford', date:'22 Des 2025', time:'15:00', venue:'Selhurst Park'},
-      {id:7, home:'Leicester City', away:'Everton', date:'19 Des 2025', time:'19:00', venue:'King Power Stadium'},
-      {id:8, home:'Wolves', away:'Leeds United', date:'21 Des 2025', time:'14:00', venue:'Molineux'},
-      {id:9, home:'Fulham', away:'Burnley', date:'22 Des 2025', time:'17:00', venue:'Craven Cottage'},
-      {id:10, home:'Southampton', away:'Sheffield United', date:'18 Des 2025', time:'13:30', venue:"St Mary's Stadium"}
-    ];
-
-    // Build match dropdown
-    const matchSelect = document.getElementById('matchSelect');
-    matches.forEach(m => {
-      const opt = document.createElement('option');
-      opt.value = m.id;
-      opt.textContent = `${m.home} vs ${m.away} — ${m.date} • ${m.venue}`;
-      matchSelect.appendChild(opt);
-    });
-
-    // If user came from beranda, localStorage may have selected match
-    const stored = localStorage.getItem('pl_selectedMatch');
-    if(stored){
-      const sel = JSON.parse(stored);
-      const opt = Array.from(matchSelect.options).find(o => parseInt(o.value,10) === sel.id);
-      if(opt) matchSelect.value = sel.id;
-      document.getElementById('nama').value = localStorage.getItem('pl_user') || '';
-    }
-
-    // Seat grid config: rows A-H (8), cols 12 (wider stadium)
-    const rows = ['A','B','C','D','E','F','G','H'];
-    const cols = 12;
-    const seatGrid = document.getElementById('seatGrid');
-    const selectedList = document.getElementById('selectedList');
-    const totalPrice = document.getElementById('totalPrice');
-    const kategoriSelect = document.getElementById('kategori');
-    let selectedSeats = JSON.parse(localStorage.getItem('pl_selectedSeats') || '[]');
-
-    // Pre-reserved for stadium feel
-    const reserved = new Set(['A1','A2','A3','B6','C3','D10','E5','F8','G2','H12','C12','B11']);
-
-    function rowCategory(r){
-      if(r==='A') return 'VIP';
-      if(r==='B') return 'Premium';
-      if(r==='C'||r==='D') return 'Regular';
-      return 'Economy';
-    }
-
-    function createSeat(code, state, cat){
-      const btn = document.createElement('button');
-      btn.type='button';
-      btn.className = 'seat ' + (state==='Reserved'?'reserved':'available') + ' ' + cat.toLowerCase();
-      btn.textContent = code;
-      btn.dataset.seat = code;
-      btn.dataset.cat = cat;
-      btn.setAttribute('aria-label','Kursi '+code);
-      if(state==='Reserved'){
-        btn.disabled = true;
-      } else {
-        btn.addEventListener('click', () => toggleSeat(code, btn));
-      }
-      // restore selected
-      if(selectedSeats.includes(code)){
-        btn.classList.add('selected');
-      }
-      return btn;
-    }
-
-    function buildGrid(){
-      seatGrid.innerHTML = '';
-      for(const r of rows){
-        for(let c=1;c<=cols;c++){
-          const code = r + c;
-          const cat = rowCategory(r);
-          const state = reserved.has(code)?'Reserved':'Available';
-          const seat = createSeat(code,state,cat);
-          seatGrid.appendChild(seat);
-        }
-      }
-      updateSummary();
-    }
-
-    function toggleSeat(code, btn){
-      const idx = selectedSeats.indexOf(code);
-      if(idx>-1){
-        selectedSeats.splice(idx,1);
-        btn.classList.remove('selected');
-      } else {
-        selectedSeats.push(code);
-        btn.classList.add('selected');
-      }
-      localStorage.setItem('pl_selectedSeats', JSON.stringify(selectedSeats));
-      updateSummary();
-    }
-
-    function currency(n){ return 'Rp ' + Number(n).toLocaleString('id-ID'); }
-
-    function updateSummary(){
-      selectedList.textContent = selectedSeats.length ? selectedSeats.join(', ') : '-';
-      const price = parseInt(kategoriSelect.selectedOptions[0].dataset.price,10) || 0;
-      const total = selectedSeats.length * price;
-      totalPrice.textContent = currency(total);
-      // sync to localStorage for payment page
-      localStorage.setItem('pl_selectedCategory', kategoriSelect.value);
-      localStorage.setItem('pl_selectedTotal', total);
-      localStorage.setItem('pl_selectedMatchId', matchSelect.value);
-    }
-
-    // Clicking Lanjut ke Pembayaran -> validate and store data, go to pembayaran.html
-    document.getElementById('toPayment').addEventListener('click', () => {
-      const name = document.getElementById('nama').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const hp = document.getElementById('hp').value.trim();
-      const matchId = parseInt(matchSelect.value,10);
-      const match = matches.find(m=>m.id===matchId);
-      if(!match){
-        alert('Pilih pertandingan terlebih dahulu.');
-        return;
-      }
-      if(!name || !email || !hp){
-        alert('Lengkapi data pemesan.');
-        return;
-      }
-      if(selectedSeats.length === 0){
-        alert('Pilih minimal 1 kursi.');
-        return;
-      }
-      // store checkout data
-      localStorage.setItem('pl_selectedMatch', JSON.stringify(match));
-      localStorage.setItem('pl_selectedSeats', JSON.stringify(selectedSeats));
-      localStorage.setItem('pl_selectedCategory', kategoriSelect.value);
-      localStorage.setItem('pl_selectedTotal', selectedSeats.length * parseInt(kategoriSelect.selectedOptions[0].dataset.price,10));
-      localStorage.setItem('pl_user', name);
-      localStorage.setItem('pl_userEmail', email);
-      localStorage.setItem('pl_userPhone', hp);
-      // go to pembayaran
-      window.location.href = 'pembayaran.html';
-    });
-
-    // Change selected match: update title/meta and clear seats
-    matchSelect.addEventListener('change', () => {
-      const id = parseInt(matchSelect.value,10);
-      const match = matches.find(m=>m.id===id);
-      if(match){
-        document.getElementById('matchTitle').textContent = `${match.home} vs ${match.away} — ${match.venue}`;
-        document.getElementById('matchMeta').textContent = `${match.date} • ${match.time}`;
-        // Reset seat selection for new match
-        selectedSeats = [];
-        localStorage.removeItem('pl_selectedSeats');
-        buildGrid();
-      }
-    });
-
-    // footer interactions
-    document.getElementById('subscribeBtn3').addEventListener('click', () => {
-      const e = document.getElementById('footerEmail3').value.trim();
-      if(!e) return alert('Masukkan email untuk subscribe.');
-      alert('Terima kasih! Newsletter dikirim ke: ' + e);
-      document.getElementById('footerEmail3').value = '';
-    });
-    document.getElementById('backTop3').addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
-
-    // Init
-    buildGrid();
-    // If a match was preselected from beranda, set metadata
-    const pre = localStorage.getItem('pl_selectedMatch');
-    if(pre){
-      const m = JSON.parse(pre);
-      const opt = Array.from(matchSelect.options).find(o=>parseInt(o.value,10)===m.id);
-      if(opt) matchSelect.value = m.id;
-      document.getElementById('matchTitle').textContent = `${m.home} vs ${m.away} — ${m.venue}`;
-      document.getElementById('matchMeta').textContent = `${m.date} • ${m.time}`;
-    }
-  </script>
 </body>
 </html>
