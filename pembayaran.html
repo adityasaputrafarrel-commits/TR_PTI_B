@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pembayaran — Premier League Tickets</title>
+
+  <link rel="stylesheet" href="pembayaran.css">
+</head>
+
+<body>
+
+  
+  <header>
+    <div class="container header-row">
+      <div class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg"
+             class="logo-img">
+      </div>
+
+      <nav class="nav">
+        <a href="beranda.html">Beranda</a>
+        <a href="pemesanan.html">Pemesanan</a>
+        <a class="active" href="pembayaran.html">Pembayaran</a>
+        <a href="login.html" class="btn-ghost">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+
+  
+  <div class="container main-box">
+
+    <div class="title-box">
+      <h2>Konfirmasi & Pembayaran</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg"
+           class="title-logo">
+    </div>
+
+    <p>Silakan selesaikan pembayaran untuk menyelesaikan pemesanan tiket Anda.</p>
+
+    <div class="payment-grid">
+
+      
+      <div class="card">
+        <h3>Ringkasan Pesanan</h3>
+
+        <div class="summary-item">
+    <span>Pertandingan</span>
+    <input type="text" placeholder="cth: Chelsea vs Arsenal">
+</div>
+
+<div class="summary-item">
+    <span>Tanggal & Waktu</span>
+    <input type="text" placeholder="cth: 12 Mei 2025 • 19:00">
+</div>
+
+<div class="summary-item">
+    <span>Stadion</span>
+    <input type="text" placeholder="cth: Stamford Bridge">
+</div>
+
+<div class="summary-item">
+    <span>Kategori</span>
+    <input type="text" placeholder="cth: Premium">
+</div>
+
+<div class="summary-item">
+    <span>Jumlah Kursi</span>
+    <input type="number" placeholder="cth: 2">
+</div>
+
+<div class="summary-item">
+    <span>Kursi</span>
+    <input type="text" placeholder="cth: A12, A13">
+</div>
+
+        <div class="summary-item total">
+    <span>Total</span>
+    <input type="text" placeholder="cth: Rp 4.500.000">
+</div>
+
+      </div>
+
+      
+      <form class="card" action="success.html" method="POST">
+        <h3>Metode Pembayaran</h3>
+
+        <div class="input-group">
+          <label>Pilih Metode</label>
+          <select name="paymentMethod" required>
+            <option value="">-- Pilih Metode Pembayaran --</option>
+            <option value="transfer">Transfer Bank</option>
+            <option value="qris">QRIS</option>
+            <option value="kartu">Kartu Kredit/Debit</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label>Nama Lengkap</label>
+          <input type="text" name="nama" required>
+        </div>
+
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" name="email" required>
+        </div>
+
+        <div class="input-group">
+          <label>No. HP</label>
+          <input type="text" name="phone" required>
+        </div>
+
+        <button type="submit" class="btn-primary">Bayar Sekarang</button>
+      </form>
+
+    </div>
+  </div>
+
+
+  
+  <footer>
+    <div class="container footer-grid">
+
+      <div>
+        <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg"
+             class="logo-img">
+        <p>Premier League Tickets • Demo</p>
+      </div>
+
+      <div class="footer-center">
+        <input type="email" placeholder="Daftar newsletter (email)">
+        <button class="btn-ghost">Subscribe</button>
+      </div>
+
+      <div>
+        <a href="#" class="btn-ghost">Back to top</a>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
