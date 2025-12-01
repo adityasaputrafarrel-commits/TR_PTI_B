@@ -1,225 +1,173 @@
-/* =======================================================
-   GLOBAL STYLING (Modern, Simple, Elegant)
-======================================================= */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+/* ============================
+   styles.css — Premier League Stadium Theme (Revisi)
+   5 pages: login, beranda, pemesanan, pembayaran
+   Font: Poppins
+   ============================ */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+/* ====== VARIABLES (EPL colors) ====== */
+:root{
+  --epl-purple: #3a0ca3;
+  --epl-pink: #ff6bd6;
+  --gradient-start: #3a0ca3;
+  --gradient-end: #ff6bd6;
+  --bg-page: #f5f7fb;
+  --hero-bg: linear-gradient(90deg,var(--epl-purple),var(--epl-pink));
+  --card-bg: #ffffff;
+  --muted: #6b7280;
+  --text: #0b1220;
+  --accent: #ffd166;
+  --radius: 12px;
+  --shadow-strong: 0 12px 40px rgba(10,10,30,0.12);
+  --shadow-soft: 0 6px 18px rgba(10,10,30,0.06);
+  --glass: rgba(255,255,255,0.85);
+  --transition: 200ms ease;
 }
 
-body {
-    background: linear-gradient(135deg, #eef2ff, #ffffff);
-    min-height: 100vh;
-    color: #1e1e1e;
-    animation: bgFade 1.2s ease;
+/* ====== BASE ====== */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:var(--bg-page);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-@keyframes bgFade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+/* ====== CONTAINERS ====== */
+.container{max-width:1140px;margin:0 auto;padding:0 20px}
+.card{background:var(--card-bg);padding:20px;border-radius:12px;box-shadow:var(--shadow-soft)}
 
-/* =======================================================
-   TITLES & HEADERS
-======================================================= */
-h1, h2, h3 {
-    color: #2c4bff;
-    text-align: center;
-    margin-bottom: 18px;
-    letter-spacing: 0.4px;
-    animation: fadeUp .7s ease;
+/* ====== HEADER / NAV ====== */
+.stadium-header{
+  background: var(--hero-bg);
+  color:white;
+  box-shadow: var(--shadow-strong);
+  position:sticky; top:0; z-index:50;
 }
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
+.header-row{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.logo{font-weight:800;font-size:18px;letter-spacing:0.6px}
+.nav{display:flex;gap:12px;align-items:center}
+.nav-link{
+  color:rgba(255,255,255,0.95);
+  padding:8px 12px;border-radius:8px;font-weight:700;text-decoration:none;
+  transition:all var(--transition);
 }
+.nav-link:hover{background:rgba(255,255,255,0.06)}
+.nav-link.active{background:rgba(255,255,255,0.12)}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.12);padding:6px 10px;border-radius:8px;color:white}
 
-/* =======================================================
-   FORM STYLES – UNIVERSAL (Tanpa ubah HTML)
-======================================================= */
-form {
-    max-width: 460px;
-    margin: 30px auto;
-    padding: 28px;
-    background: rgba(255, 255, 255, 0.75);
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.1);
-    animation: floatUp .8s ease;
+/* ====== HERO ====== */
+.hero-viewport{margin-bottom:26px}
+.stadium-hero{
+  background: radial-gradient(circle at 10% 20%, rgba(58,12,163,0.65), rgba(58,12,163,0.55)), linear-gradient(90deg,var(--epl-purple),var(--epl-pink));
+  color:white;
+  padding:64px 0;
+  border-bottom-left-radius:28px;
+  border-bottom-right-radius:28px;
+  box-shadow: var(--shadow-strong);
 }
-
-@keyframes floatUp {
-    from { transform: translateY(25px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+.hero-inner{display:flex;flex-direction:column;align-items:center;gap:12px}
+.hero-inner h1{font-size:36px;margin:0;font-weight:800;letter-spacing:0.4px}
+.lead{opacity:0.95;color:rgba(255,255,255,0.9)}
+.btn-primary{
+  display:inline-block;padding:12px 18px;border-radius:10px;background:linear-gradient(90deg,var(--epl-purple),var(--epl-pink));color:white;font-weight:800;border:none;cursor:pointer;
+  box-shadow:0 8px 30px rgba(58,12,163,0.16);transition:transform var(--transition);
 }
+.btn-primary:hover{transform:translateY(-4px)}
+.btn-lg{padding:14px 22px;font-size:16px}
 
-label {
-    font-size: 14px;
-    font-weight: 600;
-    display: block;
-    margin: 12px 0 6px;
-    color: #333;
+/* ====== CARDS & GRIDS ====== */
+.section{padding:40px 0}
+.card-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+
+/* ====== AUTH (LOGIN) ====== */
+.auth-page{display:flex;min-height:100vh;flex-direction:column}
+.auth-wrap{display:flex;align-items:center;justify-content:center;padding:48px 20px}
+.auth-card{width:100%;max-width:460px;padding:28px;border-radius:16px;background:linear-gradient(180deg,var(--glass),#fff);box-shadow:var(--shadow-strong);text-align:center}
+.pl-logo{width:82px;display:block;margin:0 auto 8px}
+.brand h1{margin:6px 0 4px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.form{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+.input-row{display:flex;flex-direction:column;align-items:flex-start}
+.input-row label{font-weight:600;margin-bottom:6px}
+input[type="text"],input[type="email"],input[type="password"],input[type="tel"],textarea,select{
+  width:100%;padding:12px;border-radius:10px;border:1px solid #e6e8f0;font-size:15px;background:#fff;
 }
+.full{width:100%}
 
-input, select, textarea {
-    width: 100%;
-    padding: 12px 14px;
-    margin-bottom: 5px;
-    font-size: 14px;
-    border-radius: 10px;
-    background: #ffffff;
-    border: 1.5px solid #dcdcdc;
-    transition: border-color .25s, box-shadow .25s, transform .25s;
+/* ====== PEMESANAN LAYOUT ====== */
+.pemesanan-container{display:grid;grid-template-columns:2fr 1fr;gap:28px;padding:34px 20px}
+@media(max-width:960px){.pemesanan-container{grid-template-columns:1fr;padding:20px}}
+.seat-card h2{margin:0 0 8px}
+.legend-wrap{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0}
+.legend{display:flex;gap:8px;align-items:center;color:var(--muted)}
+.dot{width:14px;height:14px;border-radius:4px;display:inline-block}
+.vip{background:#ffd166}
+.premium{background:#ff8ba7}
+.available{background:#e6eef8}
+.selected{background:linear-gradient(90deg,var(--epl-purple),var(--epl-pink))}
+.reserved{background:#6b7280}
+
+/* Seat grid layout responsive */
+.seat-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:8px;margin-top:14px;
 }
+@media(max-width:980px){.seat-grid{grid-template-columns:repeat(8,1fr)}}
+@media(max-width:640px){.seat-grid{grid-template-columns:repeat(4,1fr)}}
 
-/* Fokus: Glow interaktif */
-input:focus, select:focus, textarea:focus {
-    border-color: #2c4bff;
-    box-shadow: 0 0 0 4px rgba(44, 75, 255, 0.22);
-    outline: none;
-    transform: translateY(-2px);
+.seat{
+  padding:10px 6px;text-align:center;border-radius:8px;background:#eef3fb;border:1px solid rgba(11,22,40,0.04);
+  font-weight:700;cursor:pointer;transition:all var(--transition);
 }
+.seat:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(58,12,163,0.06)}
+.seat.selected{background:linear-gradient(90deg,var(--epl-purple),var(--epl-pink));color:white;box-shadow:0 8px 22px rgba(58,12,163,0.18)}
+.seat.reserved{background:#bfc6cf;color:#fff;cursor:not-allowed}
 
-/* Hover input */
-input:hover, select:hover, textarea:hover {
-    border-color: #9bb3ff;
-}
+/* Order card */
+.order-card .form{gap:10px}
+.selected-list{min-height:52px;padding:10px;border-radius:10px;background:#fbfbfe;border:1px solid #eef2ff;color:var(--muted);display:flex;align-items:center}
+.price{font-weight:900;font-size:18px;margin-top:6px;color:var(--epl-purple)}
+.btn-sm{padding:8px 10px;font-size:14px}
 
-/* =======================================================
-   BUTTON STYLE (PROFESSIONAL + RIPPLES)
-======================================================= */
-button, input[type="submit"] {
-    width: 100%;
-    margin-top: 18px;
-    padding: 14px;
-    background: #2c4bff;
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    cursor: pointer;
-    font-weight: 600;
-    position: relative;
-    overflow: hidden;
-    transition: transform .25s, box-shadow .25s;
-}
+/* ====== PAYMENT LAYOUT ====== */
+.payment-container{max-width:1200px;margin:40px auto;padding:0 20px}
+.payment-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:18px}
+@media(max-width:900px){.payment-grid{grid-template-columns:1fr;padding:0 10px}}
 
-/* Hover efek naik */
-button:hover, input[type="submit"]:hover {
-    background: #1d39e5;
-    transform: translateY(-3px);
-    box-shadow: 0 12px 20px rgba(44, 75, 255, 0.28);
-}
+/* Summary & payment form */
+.summary-box{padding:22px;border-radius:12px}
+.summary-item{display:flex;justify-content:space-between;margin-bottom:12px}
+.summary-item.total{font-size:1.1rem;font-weight:800;color:var(--epl-purple)}
 
-/* Tekan animasi */
-button:active, input[type="submit"]:active {
-    transform: scale(0.97);
-}
+/* modal */
+.modal{display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(2,6,23,0.6), rgba(2,6,23,0.6));padding:20px;z-index:999}
+.modal .modal-content{padding:22px;border-radius:12px;max-width:480px;width:100%;box-shadow:var(--shadow-strong)}
+.modal[style*="display:flex"]{display:flex}
 
-/* Ripple effect */
-button::after, input[type="submit"]::after {
-    content: "";
-    width: 0;
-    height: 0;
-    position: absolute;
-    background: rgba(255,255,255,0.55);
-    border-radius: 50%;
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%,-50%);
-}
+/* ====== FOOTER (INTERACTIVE) ====== */
+.interactive-footer{background:linear-gradient(90deg,var(--epl-purple),var(--epl-pink));color:white;padding:18px 0;margin-top:28px;border-top-left-radius:12px;border-top-right-radius:12px}
+.footer-grid{display:flex;gap:20px;align-items:center;justify-content:space-between;max-width:1140px;margin:0 auto;padding:0 20px}
+.footer-left{display:flex;gap:12px;align-items:center}
+.footer-logo{width:38px}
+.footer-center input{padding:10px;border-radius:8px;border:none;width:260px}
+.footer-center button{margin-left:8px;padding:10px 12px;border-radius:8px;border:none;background:rgba(0,0,0,0.08);color:white}
+.footer-right{display:flex;gap:12px;align-items:center}
+.link-inline{color:var(--accent);font-weight:700}
 
-button:active::after,
-input[type="submit"]:active::after {
-    width: 240px;
-    height: 240px;
-    opacity: 1;
-    transition: .45s;
-    top: var(--y);
-    left: var(--x);
-}
+/* ====== UTILS & A11Y ====== */
+.muted{color:var(--muted)}
+.link-inline{color:var(--epl-pink);font-weight:700}
+input:focus,select:focus,textarea:focus,.seat:focus{outline:3px solid rgba(58,12,163,0.12);outline-offset:2px}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.12);padding:8px 10px;border-radius:8px;color:white;cursor:pointer}
 
-/* =======================================================
-   CARD / DIV UNIVERSAL – FLOATING STYLE
-======================================================= */
-div, section {
-    transition: transform .3s ease, box-shadow .3s ease;
-}
-
-/* Khusus container umum */
-.container, .box, .panel, .wrapper {
-    background: rgba(255,255,255,0.7);
-    padding: 25px;
-    border-radius: 16px;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 18px 36px rgba(0,0,0,0.08);
-}
-
-/* Hover float card */
-.container:hover, .box:hover, .panel:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 24px 50px rgba(0,0,0,0.12);
-}
-
-/* =======================================================
-   LINK STYLE – Natural & Elegan
-======================================================= */
-a {
-    text-decoration: none;
-    color: #2c4bff;
-    font-weight: 500;
-    position: relative;
-    transition: color .25s ease;
-}
-
-a:hover {
-    color: #001bb8;
-}
-
-a::after {
-    content: "";
-    width: 0%;
-    height: 2px;
-    background: #2c4bff;
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    transition: .3s;
-}
-
-a:hover::after {
-    width: 100%;
-}
-
-/* =======================================================
-   FOOTER (Elegan)
-======================================================= */
-footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
-    color: #444;
-    margin-top: 40px;
-}
-
-/* =======================================================
-   CREDIT — CSS dibuat oleh Adi Haki (036)
-======================================================= */
-body::after {
-    content: "CSS dibuat oleh Adi Haki (036)";
-    position: fixed;
-    bottom: 8px;
-    right: 14px;
-    background: rgba(0,0,0,0.55);
-    color: #fff;
-    padding: 6px 12px;
-    font-size: 12px;
-    border-radius: 8px;
-    backdrop-filter: blur(6px);
-    opacity: 0.85;
-    pointer-events: none;
+/* small helpers */
+.card.small{padding:14px}
+@media(max-width:720px){
+  .footer-grid{flex-direction:column;gap:10px;text-align:center}
+  .footer-center input{width:100%}
 }

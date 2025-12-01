@@ -1,0 +1,182 @@
+<!-- pembayaran.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pembayaran — Premier League Tickets</title>
+  <link href="css_TRPTI.css" rel="stylesheet">
+  <link rel="stylesheet" href="TR.css" />
+</head>
+<body>
+  <header class="site-header stadium-header">
+    <div class="container header-row">
+      <div class="logo">
+  <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg" 
+       alt="Premier League Logo" class="logo-img">
+</div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="beranda.html" class="nav-link">Beranda</a>
+        <a href="pemesanan.html" class="nav-link">Pemesanan</a>
+        <a href="pembayaran.html" class="nav-link active">Pembayaran</a>
+        <a href="login.html" class="nav-link btn-ghost">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="payment-container container">
+    <div class="title-box">
+      <h2>Konfirmasi & Pembayaran</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg"
+           alt="Premier League Logo" class="title-logo">
+    </div>
+
+    <p class="subtitle">Selesaikan pembayaran untuk mengamankan tiket pertandingan Anda.</p>
+
+    <p class="subtitle">Selesaikan pembayaran untuk mengamankan tiket pertandingan Anda.</p>
+
+    <div class="payment-grid">
+      <div class="summary-box card">
+        <h3>Ringkasan Pesanan</h3>
+        <div class="summary-item"><span>Pertandingan</span><strong id="pertandingan">-</strong></div>
+        <div class="summary-item"><span>Tanggal & Waktu</span><strong id="dt">-</strong></div>
+        <div class="summary-item"><span>Stadion</span><strong id="venue">-</strong></div>
+
+        <div class="summary-item"><span>Kategori</span><strong id="kategoriText">-</strong></div>
+        <div class="summary-item"><span>Jumlah Kursi</span><strong id="jumlahKursi">-</strong></div>
+        <div class="summary-item"><span>Kursi</span><strong id="seatList">-</strong></div>
+        <hr>
+        <div class="summary-item total"><span>Total Pembayaran</span><strong id="totalHarga">Rp0</strong></div>
+      </div>
+
+      <div class="payment-form card">
+        <h3>Metode Pembayaran</h3>
+        <div class="input-group">
+          <label>Pilih Metode</label>
+          <select id="paymentMethod" required>
+            <option value="">-- Pilih Metode Pembayaran --</option>
+            <option value="transfer">Transfer Bank</option>
+            <option value="qris">QRIS</option>
+            <option value="kartu">Kartu Kredit/Debit</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label>Nama Lengkap</label>
+          <input type="text" id="payName" placeholder="Nama sesuai pemesan" required>
+        </div>
+
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" id="payEmail" placeholder="email@example.com" required>
+        </div>
+
+        <div class="input-group">
+          <label>No. HP</label>
+          <input type="text" id="payPhone" placeholder="08xxxx" required>
+        </div>
+
+        <button class="btn-primary" id="btnBayar">Bayar Sekarang</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="page-footer interactive-footer">
+    <div class="container footer-grid">
+      <div class="footer-left">
+        <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg" alt="PL" class="footer-logo">
+        <p>Premier League Tickets • Demo</p>
+      </div>
+
+      <div class="footer-center">
+        <input id="footerEmail4" type="email" placeholder="Daftar newsletter (email)" />
+        <button id="subscribeBtn4" class="btn-ghost">Subscribe</button>
+      </div>
+
+      <div class="footer-right">
+        <button id="backTop4" class="btn-ghost">Back to top</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- success modal -->
+  <div class="modal" id="modalPembayaran" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content card">
+      <h3>Pembayaran Berhasil!</h3>
+      <p>Tiket Anda sudah terproses. E-ticket akan dikirim ke email Anda (simulasi).</p>
+      <div style="margin-top:12px;">
+        <button id="doneBtn" class="btn-primary">Selesai</button>
+        <button onclick="window.location.href='beranda.html'" class="btn-ghost" style="margin-left:8px;">Kembali ke Beranda</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Load checkout data from localStorage
+    const match = JSON.parse(localStorage.getItem('pl_selectedMatch') || 'null');
+    const seats = JSON.parse(localStorage.getItem('pl_selectedSeats') || '[]');
+    const category = localStorage.getItem('pl_selectedCategory') || '-';
+    const total = Number(localStorage.getItem('pl_selectedTotal') || 0);
+    const user = localStorage.getItem('pl_user') || localStorage.getItem('pl_userEmail') || '';
+
+    function currency(n){ return 'Rp ' + Number(n).toLocaleString('id-ID'); }
+
+    document.getElementById('kategoriText').textContent = category;
+    document.getElementById('jumlahKursi').textContent = seats.length || '-';
+    document.getElementById('seatList').textContent = seats.length ? seats.join(', ') : '-';
+    document.getElementById('totalHarga').textContent = currency(total);
+
+    if(match){
+      document.getElementById('pertandingan').textContent = `${match.home} vs ${match.away}`;
+      document.getElementById('dt').textContent = `${match.date} • ${match.time}`;
+      document.getElementById('venue').textContent = match.venue;
+    }
+
+    // Prefill user info
+    document.getElementById('payName').value = user || '';
+    document.getElementById('payEmail').value = localStorage.getItem('pl_userEmail') || '';
+    document.getElementById('payPhone').value = localStorage.getItem('pl_userPhone') || '';
+
+    // Payment handler (simulated)
+    document.getElementById('btnBayar').addEventListener('click', () => {
+      const method = document.getElementById('paymentMethod').value;
+      const name = document.getElementById('payName').value.trim();
+      const email = document.getElementById('payEmail').value.trim();
+      const phone = document.getElementById('payPhone').value.trim();
+      if(!method || !name || !email || !phone){
+        alert('Lengkapi semua data pembayaran.');
+        return;
+      }
+      // simulate success
+      document.getElementById('modalPembayaran').style.display = 'flex';
+      document.getElementById('modalPembayaran').setAttribute('aria-hidden','false');
+      // mark seats reserved (store)
+      const reserved = JSON.parse(localStorage.getItem('pl_reservedSeats') || '[]');
+      const merged = Array.from(new Set(reserved.concat(seats)));
+      localStorage.setItem('pl_reservedSeats', JSON.stringify(merged));
+      // keep essential info as record
+      localStorage.setItem('pl_lastOrder', JSON.stringify({
+        match, seats, category, total, name, email, phone, method, time: new Date().toISOString()
+      }));
+      // clear selected seats for next order
+      localStorage.removeItem('pl_selectedSeats');
+      localStorage.removeItem('pl_selectedTotal');
+    });
+
+    document.getElementById('doneBtn').addEventListener('click', () => {
+      alert('Terima kasih! Struk dan e-ticket (simulasi) dikirim ke email Anda.');
+      window.location.href = 'beranda.html';
+    });
+
+    // footer interactions
+    document.getElementById('subscribeBtn4').addEventListener('click', () => {
+      const e = document.getElementById('footerEmail4').value.trim();
+      if(!e) return alert('Masukkan email untuk subscribe.');
+      alert('Terima kasih! Newsletter dikirim ke: ' + e);
+      document.getElementById('footerEmail4').value = '';
+    });
+    document.getElementById('backTop4').addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+  </script>
+</body>
+</html>
